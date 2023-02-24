@@ -33,3 +33,37 @@ export const StyledProductList = styled.ul`
     }
   }
 `;
+
+export const DivSeach = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px;
+
+  button {
+    width: 150px;
+    height: 38px;
+    border-radius: 8px;
+    background-color: #27ae60;
+    color: #fff;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    span {
+      color: gray;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (min-width: 900px) {
+    flex-direction: row;
+    padding: 0 20px;
+
+    button {
+      width: 130px;
+    }
+  }
+`;

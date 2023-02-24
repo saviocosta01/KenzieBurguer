@@ -1,25 +1,36 @@
+import { useContext } from 'react';
 import CartProductCard from './CartProductCard';
 
 import { StyledCartProductList } from './style';
 import { StyledButton } from '../../../styles/button';
 import { StyledParagraph } from '../../../styles/typography';
+import { CartContext } from '../../../providers/CartContext';
 
-const CartProductList = () => (
-  <StyledCartProductList>
-    <ul>
-      <CartProductCard />
-    </ul>
+const CartProductList = () => {
+  const { RemoveAllProducts, SomaTotal } = useContext(CartContext);
+  return (
+    <StyledCartProductList>
+      <ul>
+        <CartProductCard />
+      </ul>
 
-    <div className='totalBox'>
-      <StyledParagraph>
-        <strong>Total</strong>
-      </StyledParagraph>
-      <StyledParagraph className='total'>R$ 14,00</StyledParagraph>
-    </div>
-    <StyledButton $buttonSize='default' $buttonStyle='gray'>
-      Remover todos
-    </StyledButton>
-  </StyledCartProductList>
-);
+      <div className='totalBox'>
+        <StyledParagraph>
+          <strong>Total</strong>
+        </StyledParagraph>
+        <StyledParagraph className='total'>
+          R$ {SomaTotal.toFixed(2)}
+        </StyledParagraph>
+      </div>
+      <StyledButton
+        $buttonSize='default'
+        $buttonStyle='gray'
+        onClick={RemoveAllProducts}
+      >
+        Remover todos
+      </StyledButton>
+    </StyledCartProductList>
+  );
+};
 
 export default CartProductList;
