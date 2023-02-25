@@ -10,6 +10,7 @@ interface TypeChildren {
 interface LoginUser {
   email: string;
   password: string;
+  id?: number;
 }
 
 interface RegisterUser {
@@ -69,6 +70,7 @@ export const UserProvider = ({ children }: TypeChildren) => {
 
   const autoLogin = async () => {
     const token = localStorage.getItem('@TOKEN');
+
     if (token) {
       try {
         const response = await api.get('/products', {
@@ -77,6 +79,7 @@ export const UserProvider = ({ children }: TypeChildren) => {
           },
         });
         setListProducts(response.data);
+        navigate('/shop');
       } catch (error) {
         toast.error('Ops! algo deu errado');
       }
@@ -98,7 +101,10 @@ export const UserProvider = ({ children }: TypeChildren) => {
   };
 
   useEffect(() => {
-    autoLogin();
+    const Token = localStorage.getItem('@TOKEN');
+    if (Token) {
+      autoLogin();
+    }
   }, []);
 
   const Logout = () => {

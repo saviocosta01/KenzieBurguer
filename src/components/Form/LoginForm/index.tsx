@@ -47,7 +47,9 @@ const LoginForm = () => {
         id='password'
         {...register('password')}
       />
-      <StyledParagraph fontColor='red'>{errors.email?.message}</StyledParagraph>
+      <StyledParagraph fontColor='red'>
+        {errors.password?.message}
+      </StyledParagraph>
       <StyledButton $buttonSize='default' $buttonStyle='green'>
         Entrar
       </StyledButton>
