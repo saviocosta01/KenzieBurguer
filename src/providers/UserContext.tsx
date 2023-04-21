@@ -56,7 +56,7 @@ export const UserProvider = ({ children }: TypeChildren) => {
       : product.name.toLowerCase().includes(search.toLowerCase()) ||
         product.category.toLowerCase().includes(search.toLowerCase())
   );
-
+  console.log(SearchProducts);
   const RegiterResponse = async (data: RegisterUser) => {
     try {
       const response = await api.post('/users', data);
